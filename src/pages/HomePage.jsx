@@ -1,8 +1,11 @@
 import React from "react";
 
 const HomePage = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
   return (
-    <secction className="flex items-center h-[calc(100vh-100px)] gap-10">
+    <secction className="flex items-center sm:items-start h-[calc(100vh-100px)] gap-10 sm:pt-10 sm:h-full sm:pb-10">
       <div className="flex flex-col gap-14">
         <h1 className="text-6xl lg:text-5xl leading-tight font-semibold">
           Find Real Estate & Get Your Dream Place
@@ -13,7 +16,7 @@ const HomePage = () => {
           pariatur fugit quos laudantium temporibus dolor ea repellat provident
           impedit!
         </p>
-        <div>
+        <form>
           <button className="px-8 py-3 rounded-tl-md border-[1px] border-b-0 border-black/50 bg-black text-white">
             Buy
           </button>
@@ -21,10 +24,25 @@ const HomePage = () => {
             Rent
           </button>
           <div className="flex border-[1px] overflow-hidden border-black/50 [&_input]:pl-3 [&_input]:w-full gap-1 sm:flex-col sm:border-0 sm:[&_input]:border-2 sm:[&_input]:py-3">
-            <input type="text" placeholder="City Location" />
-            <input type="number" min={0} max={100000} placeholder="Min Price" />
-            <input type="number" min={0} max={100000} placeholder="Max Price" />
-            <button className="bg-yellow-400 p-2 sm:p-0 w-[300px] sm:w-full h-16 sm:h-12 grid place-items-center">
+            <input type="text" name="location" placeholder="City Location" />
+            <input
+              type="number"
+              name="minPrice"
+              min={0}
+              max={100000}
+              placeholder="Min Price"
+            />
+            <input
+              type="number"
+              name="maxPrice"
+              min={0}
+              max={100000}
+              placeholder="Max Price"
+            />
+            <button
+              type="submit"
+              className="bg-yellow-400 p-2 sm:p-0 w-[300px] sm:w-full h-16 sm:h-12 grid place-items-center"
+            >
               <img
                 src="/search.png"
                 alt="search icon"
@@ -32,7 +50,7 @@ const HomePage = () => {
               />
             </button>
           </div>
-        </div>
+        </form>
         <div className="flex justify-between sm:hidden">
           <div>
             <span className="text-4xl font-semibold">16+</span>
