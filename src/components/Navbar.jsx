@@ -3,10 +3,10 @@ import React from "react";
 const Navbar = () => {
   return (
     <nav className="flex justify-between">
-      <div className="flex gap-10 items-center w-[155%]">
+      <div className="flex gap-10 items-center">
         <div className="flex gap-5">
           <img src="/logo.png" alt="logo" className="w-7" />
-          <span className="text-xl font-bold">ZameenEstate</span>
+          <span className="text-xl font-bold md:hidden">ZameenEstate</span>
         </div>
         <ul className="flex gap-10">
           <li>Home</li>
@@ -15,7 +15,7 @@ const Navbar = () => {
           <li>Agents</li>
         </ul>
       </div>
-      <div className="flex gap-5 items-center pr-5 py-6 w-full justify-end bg-red-50">
+      <div className="flex gap-5 items-center pr-5 py-6 w-ful justify-end">
         <img
           src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
           alt="user image"
