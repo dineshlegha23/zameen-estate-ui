@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 const HomePage = () => {
+  const [query, setQuery] = useState({
+    type: "buy",
+    location: "",
+    minPrice: "",
+    maxPrice: "",
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
+
   return (
     <secction className="flex items-center sm:items-start h-[calc(100vh-100px)] gap-10 sm:pt-10 sm:h-full sm:pb-10">
-      <div className="flex flex-col gap-14">
+      <div className="flex flex-col gap-12">
         <h1 className="text-6xl lg:text-5xl leading-tight font-semibold">
           Find Real Estate & Get Your Dream Place
         </h1>
@@ -16,11 +24,21 @@ const HomePage = () => {
           pariatur fugit quos laudantium temporibus dolor ea repellat provident
           impedit!
         </p>
-        <form>
-          <button className="px-8 py-3 rounded-tl-md border-[1px] border-b-0 border-black/50 bg-black text-white">
+        <form onSubmit={handleSubmit}>
+          <button
+            onClick={() => setQuery((prev) => ({ ...prev, type: "buy" }))}
+            className={`px-8 py-3 rounded-tl-md border-[1px] border-b-0 border-black/50 ${
+              query.type === "buy" ? "bg-black text-white" : ""
+            }`}
+          >
             Buy
           </button>
-          <button className="px-8 py-3 rounded-tr-md border-[1px] border-black/50 border-b-0">
+          <button
+            onClick={() => setQuery((prev) => ({ ...prev, type: "rent" }))}
+            className={`px-8 py-3 rounded-tr-md border-[1px] border-black/50 border-b-0 ${
+              query.type === "rent" ? "bg-black text-white" : ""
+            }`}
+          >
             Rent
           </button>
           <div className="flex border-[1px] overflow-hidden border-black/50 [&_input]:pl-3 [&_input]:w-full gap-1 sm:flex-col sm:border-0 sm:[&_input]:border-2 sm:[&_input]:py-3">
@@ -66,8 +84,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="bkg-red-50 h-[calc(100vh-100px)] w-full flex items-center relative md:hidden">
-        <img src="/bg.png" alt="hero image" className="absolute w-[120%]" />
+      <div className="w-full h-full flex justify-center items-center relative overflow-hidden md:hidden">
+        <img src="/bg.png" alt="hero image" className="absolute w-[100%]" />
       </div>
     </secction>
   );

@@ -32,7 +32,7 @@ const Navbar = () => {
         <button className="bg-yellow-400 px-6 py-3 font-semibold relative after:absolute after:-top-3 after:-right-3 after:size-7 after:grid after:place-items-center after:rounded-full after:bg-red-600 after:text-white after:content-['3']">
           Profile
         </button>
-        <div>
+        <div className="hidden sm:block">
           <img
             src="/menu.png"
             alt="menu icon"
@@ -41,7 +41,7 @@ const Navbar = () => {
           />
           {isOpen && (
             <ul
-              className={`absolute flex flex-col justify-center items-center gap-10 text-xl bg-black text-white w-56 top-0 h-full z-0 transition-all duration-1000 ${
+              className={`absolute flex flex-col justify-center items-center gap-10 text-xl bg-black text-white w-60 top-0 h-full z-0 transition-all duration-1000 ${
                 isOpen ? "right-0" : "right-80"
               }`}
             >
