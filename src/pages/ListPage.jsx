@@ -6,8 +6,8 @@ import Map from "../components/Map";
 
 const ListPage = () => {
   return (
-    <div className="flex justify-between">
-      <section className="w-full">
+    <div className="flex justify-between md:flex-col">
+      <section className="pr-10 md:pr-0 max-w-[790px] overflow-y-scroll max-h-[calc(100vh-100px)] md:mb-10">
         <Filters />
         <div className="flex flex-col gap-10 my-12">
           {listData.map((property) => (
@@ -15,7 +15,7 @@ const ListPage = () => {
           ))}
         </div>
       </section>
-      <section className="w-full">
+      <section className="mt-0 rounded-3xl overflow-hidden">
         <Map />
       </section>
     </div>

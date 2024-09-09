@@ -14,7 +14,7 @@ const Filters = () => {
           name="city"
           placeholder="City Location"
         />
-        <div className="flex gap-10 mt-2 [&_select]:border-[1px] [&_select]:border-black/20 [&_select]:rounded-md [&_select]:py-[6px] [&_select]:px-2">
+        <div className="flex justify-between flex-wrap gap-8 mt-2 [&_select]:border-[1px] [&_select]:border-black/20 [&_select]:rounded-md [&_select]:py-[6px] [&_select]:px-2 [&_select]:w-24 [&_input]:w-24">
           <div>
             <label htmlFor="type">Type</label>
             <select name="type" id="type">
@@ -49,6 +49,7 @@ const Filters = () => {
             <label htmlFor="minPrice">Bedroom</label>
             <input type="text" name="bedroom" placeholder="any" />
           </div>
+
           <img
             src="/search.png"
             className="w-24 h-14 px-8 py-3 bg-yellow-400"
