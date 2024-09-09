@@ -1,10 +1,8 @@
 import React from "react";
-import PropertyList from "./PropertyList";
-import { listData } from "../../public/data";
 
-const SearchAndFilters = () => {
+const Filters = () => {
   return (
-    <section>
+    <>
       <p className="text-2xl font-thin mb-2">
         Search results for <span className="font-bold">London</span>
       </p>
@@ -58,14 +56,8 @@ const SearchAndFilters = () => {
           />
         </div>
       </form>
-
-      <div className="flex flex-col gap-10 my-12">
-        {listData.map((property) => (
-          <PropertyList {...property} />
-        ))}
-      </div>
-    </section>
+    </>
   );
 };
 
-export default SearchAndFilters;
+export default Filters;
