@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState({
     type: "buy",
     location: "",
@@ -10,6 +12,7 @@ const HomePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigate("/properties");
   };
 
   return (

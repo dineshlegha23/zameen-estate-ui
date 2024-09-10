@@ -13,7 +13,7 @@ const Pin = ({ item }) => {
             alt=""
           />
           <div className="flex flex-col">
-            <Link to={`/property/${item.id}`} className="text-[#0078A8]">
+            <Link to={`/properties/${item.id}`} className="text-[#0078A8]">
               {item.title}
             </Link>
             <p>{item.bedroom} bedroom</p>

@@ -1,18 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="flex justify-between">
       <div className="flex gap-10 items-center">
-        <div className="flex gap-5">
+        <div
+          className="flex gap-5 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <img src="/logo.png" alt="logo" className="w-7" />
           <span className="text-xl font-bold md:hidden sm:block">
             ZameenEstate
           </span>
         </div>
-        <ul className="flex gap-10 sm:hidden">
+        <ul className="flex gap-10 [&_li]:cursor-pointer sm:hidden">
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>

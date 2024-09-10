@@ -12,7 +12,7 @@ const PropertyList = ({
 }) => {
   return (
     <section className="flex gap-5">
-      <Link to={`/property/${id}`}>
+      <Link to={`/properties/${id}`}>
         <img
           src={img}
           className="min-w-72 h-52 object-cover rounded-xl hover:scale-105 transition-all sm:hidden"
@@ -20,7 +20,7 @@ const PropertyList = ({
         />
       </Link>
       <div className="flex flex-col justify-between w-full">
-        <Link to={`/property/${id}`}>
+        <Link to={`/properties/${id}`}>
           <h2 className="font-semibold text-xl text-black/80 transition-all hover:text-blue-400">
             {title}
           </h2>
