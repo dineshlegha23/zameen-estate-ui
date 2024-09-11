@@ -5,12 +5,10 @@ import Pin from "./Pin";
 
 const Map = ({ listData }) => {
   return (
-    // <div className={`w-full flex justify-end md:mb-10`}>
     <MapContainer
       center={[52.4797, -1.90269]}
-      zoom={7}
+      zoom={6}
       scrollWheelZoom={false}
-      // className="h-[calc(100vh-100px)] w-[40vw] md:w-[100vw] md:h-[90vh]"
       className="h-full w-full"
     >
       <TileLayer
@@ -21,7 +19,6 @@ const Map = ({ listData }) => {
         <Pin key={item.id} item={item} />
       ))}
     </MapContainer>
-    // </div>
   );
 };
 

@@ -7,10 +7,10 @@ const SinglePropertyPage = () => {
   const { id } = useParams();
   return (
     <section className="flex justify-between">
-      <div>
+      <div className="">
         <PropertyDescription />
       </div>
-      <div className="w-full bg-red-50 ">
+      <div className="bg-red-50 w-[525px]">
         <ExtraInformation />
       </div>
     </section>
