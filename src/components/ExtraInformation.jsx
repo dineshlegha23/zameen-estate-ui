@@ -2,6 +2,7 @@ import React from "react";
 import General from "./General";
 import Sizes from "./Sizes";
 import NearbyPlaces from "./NearbyPlaces";
+import Location from "./Location";
 
 const ExtraInformation = () => {
   return (
@@ -9,6 +10,7 @@ const ExtraInformation = () => {
       <General />
       <Sizes />
       <NearbyPlaces />
+      <Location />
     </section>
   );
 };

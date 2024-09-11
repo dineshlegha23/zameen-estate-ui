@@ -15,8 +15,8 @@ const ListPage = () => {
           ))}
         </div>
       </section>
-      <section className="mt-0 rounded-3xl overflow-hidden">
-        <Map />
+      <section className="mt-0 rounded-3xl overflow-hidden h-[calc(100vh-100px)] w-[40vw] md:w-[100%] md:h-[90vh] flex justify-end md:mb-10">
+        <Map listData={listData} />
       </section>
     </div>
   );
