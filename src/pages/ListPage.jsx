@@ -7,11 +7,11 @@ import Map from "../components/Map";
 const ListPage = () => {
   return (
     <div className="flex justify-between md:flex-col">
-      <section className="pr-10 md:pr-0 max-w-[790px] overflow-y-scroll max-h-[calc(100vh-100px)] md:mb-10">
+      <section className="pr-10  max-w-[790px] overflow-y-scroll max-h-[calc(100vh-100px)] md:mb-10">
         <Filters />
         <div className="flex flex-col gap-10 my-12">
           {listData.map((property) => (
-            <PropertyList {...property} />
+            <PropertyList key={property.id} {...property} />
           ))}
         </div>
       </section>

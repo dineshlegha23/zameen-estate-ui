@@ -11,7 +11,7 @@ const PropertyList = ({
   bathroom,
 }) => {
   return (
-    <section className="flex gap-5">
+    <section className="flex gap-5 sm:gap-0">
       <Link to={`/properties/${id}`}>
         <img
           src={img}

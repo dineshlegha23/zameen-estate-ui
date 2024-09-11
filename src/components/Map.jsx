@@ -18,7 +18,7 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {listData.map((item) => (
-          <Pin item={item} />
+          <Pin key={item.id} item={item} />
         ))}
       </MapContainer>
     </div>
