@@ -5,8 +5,8 @@ import { singlePostData } from "/public/data.js";
 const Location = () => {
   return (
     <section>
-      <h2 className="mb-7 text-xl font-semibold">Location</h2>
-      <div className="w-[30vw] h-[30vh] mx-auto rounded-2xl overflow-hidden">
+      <h2 className="mb-7 text-xl font-semibold md:w-full">Location</h2>
+      <div className="w-full h-[30vh] mx-auto rounded-2xl overflow-hidden">
         <Map listData={[singlePostData]} />
       </div>
     </section>

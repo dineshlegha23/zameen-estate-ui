@@ -6,11 +6,11 @@ import ExtraInformation from "../components/ExtraInformation";
 const SinglePropertyPage = () => {
   const { id } = useParams();
   return (
-    <section className="flex justify-between">
+    <section className="flex md:flex-col justify-between md:mb-10">
       <div className="">
         <PropertyDescription />
       </div>
-      <div className="bg-red-50 w-[525px]">
+      <div className="bg-red-50 w-[525px] md:w-full md:pt-5">
         <ExtraInformation />
       </div>
     </section>
