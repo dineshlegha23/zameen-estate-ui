@@ -16,7 +16,7 @@ const HomePage = () => {
   };
 
   return (
-    <secction className="flex items-center sm:items-start h-[calc(100vh-100px)] gap-10 sm:pt-10 sm:h-full sm:pb-10">
+    <section className="flex items-center sm:items-start h-[calc(100vh-100px)] gap-10 sm:pt-10 sm:h-full sm:pb-10">
       <div className="flex flex-col gap-12">
         <h1 className="text-6xl lg:text-5xl leading-tight font-semibold">
           Find Real Estate & Get Your Dream Place
@@ -90,7 +90,7 @@ const HomePage = () => {
       <div className="w-full h-full flex justify-center items-center relative overflow-hidden md:hidden">
         <img src="/bg.png" alt="hero image" className="absolute w-[100%]" />
       </div>
-    </secction>
+    </section>
   );
 };
 

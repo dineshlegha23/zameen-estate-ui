@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/authContext";
 
 const Navbar = () => {
+  const { currentUser } = useAuthContext();
+
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,10 +36,13 @@ const Navbar = () => {
           alt="user image"
           className="rounded-full w-8"
         />
-        <p className="font-semibold">John Doe</p>
-        <button className="bg-yellow-400 px-6 py-3 font-semibold relative after:absolute after:-top-3 after:-right-3 after:size-7 after:grid after:place-items-center after:rounded-full after:bg-red-600 after:text-white after:content-['3']">
+        <p className="font-semibold capitalize">{currentUser?.name}</p>
+        <Link
+          to="/profile"
+          className="bg-yellow-400 px-6 py-3 font-semibold relative after:absolute after:-top-3 after:-right-3 after:size-7 after:grid after:place-items-center after:rounded-full after:bg-red-600 after:text-white after:content-['3'] sm:hidden"
+        >
           Profile
-        </button>
+        </Link>
         <div className="hidden sm:block">
           <img
             src="/menu.png"

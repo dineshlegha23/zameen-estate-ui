@@ -3,12 +3,13 @@ import UserInformation from "../components/UserInformation";
 import PropertyList from "../components/PropertyList";
 import { listData } from "/public/data.js";
 import Messages from "../components/Messages";
+import { useAuthContext } from "../context/authContext";
 
 const ProfilePage = () => {
   const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true);
   return (
     <section className="flex md:flex-col">
-      <div className="[flex:3] pr-10 h-[calc(100vh-100px)] overflow-y-scroll">
+      <div className="[flex:3] pr-10 h-[calc(100vh-100px)]">
         <div className="flex justify-between">
           <h2 className="text-3xl font-thin">User Information</h2>
           <button className="bg-[#fece51] text-sm px-6 py-3">
@@ -23,7 +24,7 @@ const ProfilePage = () => {
             Create New Post
           </button>
         </div>
-        <div className="flex flex-col gap-10 my-12">
+        <div className="flex flex-col gap-10 my-12 h-[calc(100vh-100px)] overflow-y-scroll pr-10 sm:pr-2 pb-10">
           {listData.map((property) => (
             <PropertyList key={property.id} {...property} />
           ))}
@@ -40,7 +41,9 @@ const ProfilePage = () => {
             <div className="bg-[#f7c14b85] h-16 flex justify-between items-center px-5">
               <div className="flex items-center gap-5 font-semibold">
                 <img
-                  src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                  src={
+                    "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                  }
                   alt="user image"
                   className="w-10 h-10 rounded-full"
                 />
