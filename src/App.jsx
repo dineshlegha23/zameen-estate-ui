@@ -1,6 +1,6 @@
 import "../src/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./components/Layout";
+import { Layout, ProtectedLayout } from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import ListPage from "./pages/ListPage";
 import SinglePropertyPage from "./pages/SinglePropertyPage";
@@ -26,10 +26,10 @@ function App() {
           path: "/properties/:id",
           element: <SinglePropertyPage />,
         },
-        {
-          path: "/profile",
-          element: <ProfilePage />,
-        },
+        // {
+        //   path: "/profile",
+        //   element: <ProfilePage />,
+        // },
         {
           path: "/login",
           element: <LoginPage />,
@@ -37,6 +37,16 @@ function App() {
         {
           path: "/register",
           element: <ResgisterPage />,
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <ProtectedLayout />,
+      children: [
+        {
+          path: "/profile",
+          element: <ProfilePage />,
         },
       ],
     },
