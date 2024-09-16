@@ -3,7 +3,7 @@ import UserInformation from "../components/UserInformation";
 import PropertyList from "../components/PropertyList";
 import { listData } from "/public/data.js";
 import Messages from "../components/Messages";
-import { useAuthContext } from "../context/authContext";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true);
@@ -12,9 +12,9 @@ const ProfilePage = () => {
       <div className="[flex:3] pr-10 h-[calc(100vh-100px)]">
         <div className="flex justify-between">
           <h2 className="text-3xl font-thin">User Information</h2>
-          <button className="bg-[#fece51] text-sm px-6 py-3">
+          <Link to="/user/update" className="bg-[#fece51] text-sm px-6 py-3">
             Update Profile
-          </button>
+          </Link>
         </div>
         <UserInformation />
 

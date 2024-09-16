@@ -31,12 +31,26 @@ const Navbar = () => {
         className="flex gap-5 items-center pr-5 sm:pr-0
        py-6 w-ful justify-end sm:[&_p]:hidden sm:[&_button]:hidden"
       >
-        <img
-          src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
-          alt="user image"
-          className="rounded-full w-8"
-        />
-        <p className="font-semibold capitalize">{currentUser?.name}</p>
+        {currentUser ? (
+          <>
+            <img
+              src={
+                currentUser.avatar ||
+                "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+              }
+              alt="user image"
+              className="rounded-full w-8"
+            />
+            <p className="font-semibold capitalize">{currentUser.name}</p>
+          </>
+        ) : (
+          <Link
+            to={"/login"}
+            className="bg-blue-200 px-6 py-3 rounded-md hover:bg-blue-400"
+          >
+            Sign In
+          </Link>
+        )}
         <Link
           to="/profile"
           className="bg-yellow-400 px-6 py-3 font-semibold relative after:absolute after:-top-3 after:-right-3 after:size-7 after:grid after:place-items-center after:rounded-full after:bg-red-600 after:text-white after:content-['3'] sm:hidden"

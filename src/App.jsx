@@ -7,6 +7,7 @@ import SinglePropertyPage from "./pages/SinglePropertyPage";
 import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
 import ResgisterPage from "./pages/ResgisterPage";
+import UpdateUser from "./pages/UpdateUser";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,10 +27,6 @@ function App() {
           path: "/properties/:id",
           element: <SinglePropertyPage />,
         },
-        // {
-        //   path: "/profile",
-        //   element: <ProfilePage />,
-        // },
         {
           path: "/login",
           element: <LoginPage />,
@@ -47,6 +44,10 @@ function App() {
         {
           path: "/profile",
           element: <ProfilePage />,
+        },
+        {
+          path: "/user/update",
+          element: <UpdateUser />,
         },
       ],
     },
