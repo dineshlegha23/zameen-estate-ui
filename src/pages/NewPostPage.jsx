@@ -4,13 +4,12 @@ import UploadWidget from "../components/UploadWidget";
 
 const NewPostPage = () => {
   const [images, setImages] = useState([]);
-  console.log(images);
 
   return (
     <div className="flex gap-5 lg:flex-col">
       <div>
         <h2 className="text-center text-2xl pt-5 pb-10">Add New Post</h2>
-        <div className="flex pb-10 max-w-[750px] h-[calc(100vh-200px)] lg:h-full mx-auto overflow-y-scroll">
+        <div className="flex pb-10 w-[750px] h-[calc(100vh-200px)] lg:h-full mx-auto overflow-y-scroll">
           <NewPostInputs images={images} />
         </div>
       </div>

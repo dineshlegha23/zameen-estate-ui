@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UploadWidget from "../components/UploadWidget";
 import { useAuthContext } from "../context/authContext";
@@ -9,29 +9,38 @@ const UpdateUser = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
-  const [avatar, setAvatar] = useState(currentUser.avatar);
+  const [avatar, setAvatar] = useState([]);
 
   const url = import.meta.env.VITE_BACKEND_URL;
+  console.log(avatar);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
     const { username, email, name } = Object.fromEntries(formData);
 
     setLoading(true);
     setMessage("");
     setError(false);
-
     try {
       await axios.patch(
         `${url}/auth/update`,
-        { username, name, email, avatar },
+        { username, name, email, avatar: avatar[0] },
         { withCredentials: true }
       );
-      setCurrentUser((prev) => ({ ...prev, username, email, avatar, name }));
+      setCurrentUser((prev) => ({
+        ...prev,
+        username,
+        email,
+        avatar: avatar[0],
+        name,
+      }));
       setLoading(false);
       setMessage("Updated successfully!");
     } catch (error) {
+      console.log(error);
+
       setLoading(false);
       setError(error.response.data.msg);
     }
@@ -81,7 +90,8 @@ const UpdateUser = () => {
       <div className="w-[40%] h-[calc(100vh-100px)] flex flex-col  gap-5 justify-center items-center relative overflow-hidden sm:hidden">
         <img
           src={
-            avatar ||
+            avatar[avatar.length - 1] ||
+            currentUser.avatar ||
             "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
           }
           alt="hero image"
