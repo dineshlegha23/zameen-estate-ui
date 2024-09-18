@@ -20,9 +20,9 @@ const ProfilePage = () => {
 
         <div className="flex justify-between mt-14">
           <h2 className="text-3xl font-thin">My List</h2>
-          <button className="bg-[#fece51] text-sm px-6 py-3">
+          <Link to={"/add/post"} className="bg-[#fece51] text-sm px-6 py-3">
             Create New Post
-          </button>
+          </Link>
         </div>
         <div className="flex flex-col gap-10 my-12 h-[calc(100vh-100px)] overflow-y-scroll pr-10 sm:pr-2 pb-10">
           {listData.map((property) => (

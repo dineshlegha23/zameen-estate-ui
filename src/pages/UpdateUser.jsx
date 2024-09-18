@@ -95,7 +95,7 @@ const UpdateUser = () => {
             maxImageFileSize: 2000000,
             folder: "avatars",
           }}
-          setAvatar={setAvatar}
+          setValue={setAvatar}
         />
       </div>
     </div>
