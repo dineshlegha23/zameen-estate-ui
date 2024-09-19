@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import ResgisterPage from "./pages/ResgisterPage";
 import UpdateUser from "./pages/UpdateUser";
 import NewPostPage from "./pages/NewPostPage";
+import { listPageLoader, singlePageLoader } from "../utils/loaders";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,10 +24,12 @@ function App() {
         {
           path: "/properties",
           element: <ListPage />,
+          loader: listPageLoader,
         },
         {
           path: "/properties/:id",
           element: <SinglePropertyPage />,
+          loader: singlePageLoader,
         },
         {
           path: "/login",

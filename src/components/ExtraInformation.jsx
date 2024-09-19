@@ -6,7 +6,7 @@ import Location from "./Location";
 
 const ExtraInformation = () => {
   return (
-    <section className="flex flex-col gap-5 px-4 h-[calc(100vh-100px)] sm:h-auto overflow-y-scroll pb-5">
+    <section className="w-[460px] lg:w-[430px] flex flex-col gap-5 px-4 h-[calc(100vh-100px)] sm:h-auto overflow-y-scroll pb-5">
       <General />
       <Sizes />
       <NearbyPlaces />

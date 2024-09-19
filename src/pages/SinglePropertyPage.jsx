@@ -1,16 +1,27 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 import PropertyDescription from "../components/PropertyDescription";
 import ExtraInformation from "../components/ExtraInformation";
+import { usePostContext } from "../context/postContext";
 
 const SinglePropertyPage = () => {
-  const { id } = useParams();
+  const loaderPost = useLoaderData();
+  const { post, setPost } = usePostContext();
+
+  useEffect(() => {
+    setPost(loaderPost);
+  }, [loaderPost]);
+
+  if (!post) {
+    return <p>loading</p>;
+  }
+
   return (
     <section className="flex md:flex-col justify-between md:mb-10">
-      <div className="">
+      <div>
         <PropertyDescription />
       </div>
-      <div className="bg-red-50 w-[525px] md:w-full md:pt-5">
+      <div className="bg-red-50 md:w-full md:pt-5">
         <ExtraInformation />
       </div>
     </section>

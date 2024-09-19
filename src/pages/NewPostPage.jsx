@@ -9,13 +9,13 @@ const NewPostPage = () => {
     <div className="flex gap-5 lg:flex-col">
       <div>
         <h2 className="text-center text-2xl pt-5 pb-10">Add New Post</h2>
-        <div className="flex pb-10 w-[750px] h-[calc(100vh-200px)] lg:h-full mx-auto overflow-y-scroll">
+        <div className="flex pb-10 w-[750px] h-[calc(100vh-200px)] lg:h-full mx-auto overflow-y-scroll lg:overflow-hidden">
           <NewPostInputs images={images} />
         </div>
       </div>
-      <div className="w-full flex flex-col gap-5 justify-center items-center bg-red-50 lg:h-[200px]">
+      <div className="w-full flex flex-col gap-5 justify-center items-center py-10 bg-red-50 lg:min-h-[200px]">
         {images.map((image, index) => (
-          <img key={index} src={image}></img>
+          <img key={index} src={image} className="w-52"></img>
         ))}
         <UploadWidget
           uwConfig={{

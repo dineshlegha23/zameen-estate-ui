@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { usePostContext } from "../context/postContext";
 
-const PropertyImages = ({ singlePostData }) => {
+const PropertyImages = () => {
+  const { post: singlePostData } = usePostContext();
+
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
   const handleIndex = (direction) => {
     if (direction === "left") {
@@ -27,7 +30,7 @@ const PropertyImages = ({ singlePostData }) => {
         alt="image"
       />
       <div className="flex sm:flex-row w-full flex-col gap-5 sm:gap-2">
-        {singlePostData.images.slice(1).map((image, index) => (
+        {singlePostData.images.slice(1, 4).map((image, index) => (
           <img
             onClick={() => setCurrentImageIndex(index + 1)}
             key={image}

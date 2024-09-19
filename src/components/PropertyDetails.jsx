@@ -1,8 +1,12 @@
 import React from "react";
+import { usePostContext } from "../context/postContext";
+import DOMPurify from "dompurify";
 
-const PropertyDetails = ({ singlePostData }) => {
+const PropertyDetails = () => {
+  const { post: singlePostData } = usePostContext();
+
   return (
-    <section className="mt-[53px] max-w-[730px] mb-10 ">
+    <section className="mt-[53px] mb-10 ">
       <div className="flex justify-between sm:flex-col">
         <div className="flex flex-col gap-4">
           <h2 className="text-4xl">{singlePostData.title}</h2>
@@ -18,14 +22,22 @@ const PropertyDetails = ({ singlePostData }) => {
         </div>
         <div className="bg-[#fecd5135] rounded-lg py-4 flex flex-col items-center justify-between w-40 sm:w-full sm:mt-3 sm:gap-5">
           <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src={
+              singlePostData.user.avatar ||
+              "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            }
             className="w-12 h-12 rounded-full object-cover"
             alt=""
           />
-          <p className="font-semibold">John Doe</p>
+          <p className="font-semibold">{singlePostData.user.username}</p>
         </div>
       </div>
-      <p className="mt-12">{singlePostData.description}</p>
+      <div
+        className="mt-12"
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(singlePostData.desc),
+        }}
+      />
     </section>
   );
 };

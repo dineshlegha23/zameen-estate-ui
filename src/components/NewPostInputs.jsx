@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
 
 const NewPostInputs = ({ images }) => {
+  const navigate = useNavigate();
   const [desc, setDesc] = useState();
 
   const handleSubmit = async (e) => {
@@ -18,7 +20,8 @@ const NewPostInputs = ({ images }) => {
         {
           postData: {
             title: data.title,
-            price: Number(data.price),
+            desc: desc,
+            price: parseFloat(data.price),
             address: data.address,
             city: data.city,
             bedroom: Number(data.bedroom),
@@ -30,7 +33,6 @@ const NewPostInputs = ({ images }) => {
             images,
           },
           postDetail: {
-            desc: desc,
             utilities: data.utilities,
             pet: data.pet,
             income: data.income,
@@ -42,7 +44,7 @@ const NewPostInputs = ({ images }) => {
         },
         { withCredentials: true }
       );
-      console.log(response);
+      navigate("/properties/" + response.data.id);
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +92,7 @@ const NewPostInputs = ({ images }) => {
         theme="snow"
         value={desc}
         onChange={setDesc}
-        className="w-full h-[150px] mb-10"
+        className="w-full h-[150px] mb-10 px-9"
       />
 
       <div className="flex flex-col w-fit">
@@ -109,6 +111,7 @@ const NewPostInputs = ({ images }) => {
           Bedrooms
         </label>
         <input
+          min={1}
           type="number"
           name="bedroom"
           className="border border-black/40 px-2 py-1.5 rounded-md"
@@ -120,6 +123,7 @@ const NewPostInputs = ({ images }) => {
           Bathrooms
         </label>
         <input
+          min={1}
           type="number"
           name="bathroom"
           className="border border-black/40 px-2 py-1.5 rounded-md"
@@ -217,7 +221,7 @@ const NewPostInputs = ({ images }) => {
         </label>
         <input
           type="number"
-          name="longitude"
+          name="size"
           className="border border-black/40 px-2 py-1.5 rounded-md"
         />
       </div>
@@ -226,6 +230,7 @@ const NewPostInputs = ({ images }) => {
           School
         </label>
         <input
+          min={1}
           type="number"
           name="school"
           className="border border-black/40 px-2 py-1.5 rounded-md"
@@ -236,6 +241,7 @@ const NewPostInputs = ({ images }) => {
           Bus
         </label>
         <input
+          min={1}
           type="number"
           name="bus"
           className="border border-black/40 px-2 py-1.5 rounded-md"
@@ -246,6 +252,7 @@ const NewPostInputs = ({ images }) => {
           Restaurent
         </label>
         <input
+          min={1}
           type="number"
           name="restaurent"
           className="border border-black/40 px-2 py-1.5 rounded-md"

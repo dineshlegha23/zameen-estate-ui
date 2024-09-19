@@ -1,12 +1,12 @@
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Pin from "./Pin";
 
 const Map = ({ listData }) => {
   return (
     <MapContainer
-      center={[52.4797, -1.90269]}
+      center={[listData[0].latitude, listData[0].longitude]}
       zoom={6}
       scrollWheelZoom={false}
       className="h-full w-full"

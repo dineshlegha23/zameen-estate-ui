@@ -1,6 +1,8 @@
 import React from "react";
+import { usePostContext } from "../context/postContext";
 
 const NearbyPlaces = () => {
+  const { post } = usePostContext();
   return (
     <section>
       <h2 className="mb-7 text-xl font-semibold">Nearby Places</h2>
@@ -9,21 +11,21 @@ const NearbyPlaces = () => {
           <img src="/school.png" alt="utility icon" />
           <div>
             <h3>School</h3>
-            <p>250m away</p>
+            <p>{post.postDetail.school}m away</p>
           </div>
         </div>
         <div className="flex items-center gap-3 lg:gap-1 p-2">
           <img src="/pet.png" alt="pet icon" />
           <div>
             <h3>Bus Stop</h3>
-            <p>100m away</p>
+            <p>{post.postDetail.bus}m away</p>
           </div>
         </div>
         <div className="flex items-center gap-3 lg:gap-1 p-2">
           <img src="/fee.png" alt="fee icon" />
           <div>
             <h3>Restaurant</h3>
-            <p>200m away</p>
+            <p>{post.postDetail.restaurent}m away</p>
           </div>
         </div>
       </div>

@@ -1,20 +1,30 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const navigate = useNavigate();
   const [query, setQuery] = useState({
     type: "buy",
-    location: "",
+    city: "",
     minPrice: "",
     maxPrice: "",
   });
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    navigate("/properties");
+  const handleType = (type) => {
+    setQuery((prev) => ({ ...prev, type }));
   };
 
+  const handleChange = (e) => {
+    setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate(
+      `properties?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`
+    );
+  };
   return (
     <section className="flex items-center sm:items-start h-[calc(100vh-100px)] gap-10 sm:pt-10 sm:h-full sm:pb-10">
       <div className="flex flex-col gap-12">
@@ -29,7 +39,8 @@ const HomePage = () => {
         </p>
         <form onSubmit={handleSubmit}>
           <button
-            onClick={() => setQuery((prev) => ({ ...prev, type: "buy" }))}
+            type="button"
+            onClick={() => handleType("buy")}
             className={`px-8 py-3 rounded-tl-md border-[1px] border-b-0 border-black/50 ${
               query.type === "buy" ? "bg-black text-white" : ""
             }`}
@@ -37,7 +48,8 @@ const HomePage = () => {
             Buy
           </button>
           <button
-            onClick={() => setQuery((prev) => ({ ...prev, type: "rent" }))}
+            type="button"
+            onClick={() => handleType("rent")}
             className={`px-8 py-3 rounded-tr-md border-[1px] border-black/50 border-b-0 ${
               query.type === "rent" ? "bg-black text-white" : ""
             }`}
@@ -45,8 +57,14 @@ const HomePage = () => {
             Rent
           </button>
           <div className="flex border-[1px] overflow-hidden border-black/50 [&_input]:pl-3 [&_input]:w-full gap-1 sm:flex-col sm:border-0 sm:[&_input]:border-2 sm:[&_input]:py-3">
-            <input type="text" name="location" placeholder="City Location" />
             <input
+              onChange={handleChange}
+              type="text"
+              name="city"
+              placeholder="City Location"
+            />
+            <input
+              onChange={handleChange}
               type="number"
               name="minPrice"
               min={0}
@@ -54,6 +72,7 @@ const HomePage = () => {
               placeholder="Min Price"
             />
             <input
+              onChange={handleChange}
               type="number"
               name="maxPrice"
               min={0}
@@ -62,6 +81,7 @@ const HomePage = () => {
             />
             <button
               type="submit"
+              // to={`properties?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
               className="bg-yellow-400 p-2 sm:p-0 w-[300px] sm:w-full h-16 sm:h-12 grid place-items-center"
             >
               <img

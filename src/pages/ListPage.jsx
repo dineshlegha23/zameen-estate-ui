@@ -3,14 +3,18 @@ import PropertyList from "../components/PropertyList";
 import Filters from "../components/Filters";
 import { listData } from "/public/data";
 import Map from "../components/Map";
+import { useLoaderData } from "react-router-dom";
 
 const ListPage = () => {
+  const posts = useLoaderData();
+  console.log(posts);
+
   return (
     <div className="flex justify-between md:flex-col">
-      <section className="pr-10  max-w-[790px] overflow-y-scroll max-h-[calc(100vh-100px)] md:mb-10">
+      <section className="pr-10 lg:pr-5 xs:pr-0  max-w-[790px] overflow-y-scroll xs:overflow-hidden max-h-[calc(100vh-100px)] xs:max-h-full md:mb-10">
         <Filters />
         <div className="flex flex-col gap-10 my-12">
-          {listData.map((property) => (
+          {posts.posts.map((property) => (
             <PropertyList key={property.id} {...property} />
           ))}
         </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PropertyList = ({
   id,
-  img,
+  images,
   title,
   address,
   price,
@@ -11,11 +11,11 @@ const PropertyList = ({
   bathroom,
 }) => {
   return (
-    <section className="flex gap-5 sm:gap-0">
+    <section className="flex gap-5 p-2 sm:gap-0">
       <Link to={`/properties/${id}`}>
         <img
-          src={img}
-          className="min-w-72 h-52 object-cover rounded-xl hover:scale-105 transition-all sm:hidden"
+          src={images[0]}
+          className="min-w-72 max-w-72 h-52 object-cover rounded-xl hover:scale-105 transition-all sm:hidden"
           alt={title}
         />
       </Link>
@@ -33,7 +33,7 @@ const PropertyList = ({
           $ {price}
         </span>
         <div className="flex justify-between xs:flex-col xs:gap-3">
-          <div className="flex gap-5">
+          <div className="flex gap-5 lg:gap-2">
             <div className="bg-[#f5f5f5] flex items-center justify-center rounded-md gap-2 w-fit px-2 py-[1px]">
               <img src="/bed.png" className="w-4 h-4" alt="bed icon" />
               <p>{bedroom} bedroom</p>
