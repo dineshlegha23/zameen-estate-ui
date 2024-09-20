@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import UserInformation from "../components/UserInformation";
 import PropertyList from "../components/PropertyList";
-import { listData } from "/public/data.js";
 import Messages from "../components/Messages";
-import { Link } from "react-router-dom";
+import { Await, Link, useLoaderData } from "react-router-dom";
 
 const ProfilePage = () => {
+  const { response } = useLoaderData();
   const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true);
   return (
     <section className="flex md:flex-col">
-      <div className="[flex:3] pr-10 h-[calc(100vh-100px)]">
+      <div className="[flex:3] pr-10 lg:pr-5 sm:pr-2 h-[calc(100vh-100px)]">
         <div className="flex justify-between">
           <h2 className="text-3xl font-thin">User Information</h2>
           <Link to="/user/update" className="bg-[#fece51] text-sm px-6 py-3">
@@ -24,10 +24,23 @@ const ProfilePage = () => {
             Create New Post
           </Link>
         </div>
-        <div className="flex flex-col gap-10 my-12 h-[calc(100vh-100px)] overflow-y-scroll pr-10 sm:pr-2 pb-10">
-          {listData.map((property) => (
-            <PropertyList key={property.id} {...property} />
-          ))}
+        <div className="flex flex-col gap-10 my-12 h-[calc(100vh-100px)] overflow-y-scroll pr-10 lg:pr-2 pb-10">
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await
+              resolve={response}
+              errorElement={
+                <span className="text-center text-red-400">
+                  Error loading posts
+                </span>
+              }
+            >
+              {(response) =>
+                response.data.posts.map((property) => (
+                  <PropertyList key={property.id} {...property} />
+                ))
+              }
+            </Await>
+          </Suspense>
         </div>
       </div>
       <div className="bg-red-50 w-full [flex:2] relative flex flex-col justify-between pb-5">

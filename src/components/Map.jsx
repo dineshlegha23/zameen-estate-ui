@@ -6,7 +6,10 @@ import Pin from "./Pin";
 const Map = ({ listData }) => {
   return (
     <MapContainer
-      center={[listData[0].latitude, listData[0].longitude]}
+      center={[
+        listData[0]?.latitude || 28.7041,
+        listData[0]?.longitude || 77.1025,
+      ]}
       zoom={6}
       scrollWheelZoom={false}
       className="h-full w-full"

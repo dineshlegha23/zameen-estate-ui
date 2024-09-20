@@ -48,6 +48,7 @@ function App() {
         {
           path: "/profile",
           element: <ProfilePage />,
+          loader: listPageLoader,
         },
         {
           path: "/user/update",

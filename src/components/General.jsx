@@ -15,7 +15,7 @@ const General = () => {
           <div>
             <h3>Utilities</h3>
             <p>
-              {postDetail.utilities === "owner" ? "Renter" : "Owner"} is
+              {postDetail?.utilities === "owner" ? "Owner" : "Renter"} is
               responsible
             </p>
           </div>
@@ -25,7 +25,7 @@ const General = () => {
           <div>
             <h3>Pet Policy</h3>
             <p>
-              Pets {postDetail.pet === "allowed" ? "allowed" : "not allowed"}
+              Pets {postDetail?.pet === "allowed" ? "allowed" : "not allowed"}
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ const General = () => {
           <div>
             <h3>Property Fees</h3>
             <p>
-              {postDetail.income === "income"
+              {postDetail?.income === "income"
                 ? "Must have 3x the rent in total household income"
                 : "Must be rich"}
             </p>

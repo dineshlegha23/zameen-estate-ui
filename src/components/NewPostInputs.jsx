@@ -20,7 +20,6 @@ const NewPostInputs = ({ images }) => {
         {
           postData: {
             title: data.title,
-            desc: desc,
             price: parseFloat(data.price),
             address: data.address,
             city: data.city,
@@ -34,6 +33,7 @@ const NewPostInputs = ({ images }) => {
           },
           postDetail: {
             utilities: data.utilities,
+            desc: desc,
             pet: data.pet,
             income: data.income,
             size: Number(data.size),

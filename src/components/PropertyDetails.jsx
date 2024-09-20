@@ -35,7 +35,7 @@ const PropertyDetails = () => {
       <div
         className="mt-12"
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(singlePostData.desc),
+          __html: DOMPurify.sanitize(singlePostData.postDetail?.desc),
         }}
       />
     </section>
