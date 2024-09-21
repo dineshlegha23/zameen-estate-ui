@@ -2,14 +2,22 @@ import React, { Suspense, useState } from "react";
 import UserInformation from "../components/UserInformation";
 import PropertyList from "../components/PropertyList";
 import Messages from "../components/Messages";
-import { Await, Link, useLoaderData } from "react-router-dom";
+import { Await, Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/authContext";
 
 const ProfilePage = () => {
+  const { currentUser } = useAuthContext();
   const { response } = useLoaderData();
+  const navigate = useNavigate();
+
+  if (!currentUser) {
+    navigate("/login");
+  }
+
   const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true);
   return (
     <section className="flex md:flex-col">
-      <div className="[flex:3] pr-10 lg:pr-5 sm:pr-2 h-[calc(100vh-100px)]">
+      <div className="[flex:3] pr-10 lg:pr-5 sm:pr-2 h-[calc(100vh-100px)] overflow-y-scroll">
         <div className="flex justify-between">
           <h2 className="text-3xl font-thin">User Information</h2>
           <Link to="/user/update" className="bg-[#fece51] text-sm px-6 py-3">
@@ -24,7 +32,7 @@ const ProfilePage = () => {
             Create New Post
           </Link>
         </div>
-        <div className="flex flex-col gap-10 my-12 h-[calc(100vh-100px)] overflow-y-scroll pr-10 lg:pr-2 pb-10">
+        <div className="flex flex-col gap-10 my-12 pr-10 lg:pr-2 pb-10">
           <Suspense fallback={<p>Loading...</p>}>
             <Await
               resolve={response}
@@ -35,15 +43,42 @@ const ProfilePage = () => {
               }
             >
               {(response) =>
-                response.data.posts.map((property) => (
-                  <PropertyList key={property.id} {...property} />
-                ))
+                response.data.posts.length < 1 ? (
+                  <p className="text-xl text-center">0 posts</p>
+                ) : (
+                  response.data.posts.map((property) => (
+                    <PropertyList key={property.id} {...property} />
+                  ))
+                )
+              }
+            </Await>
+          </Suspense>
+        </div>
+        <div className="flex flex-col gap-10 pb-10 justify-between mt-14">
+          <h2 className="text-3xl font-thin">Saved Posts</h2>
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await
+              resolve={response}
+              errorElement={
+                <span className="text-center text-red-400">
+                  Error loading posts
+                </span>
+              }
+            >
+              {(response) =>
+                response.data.savedPosts.length < 1 ? (
+                  <span className="text-xl text-center">0 Saved Posts</span>
+                ) : (
+                  response.data.savedPosts.map((property) => (
+                    <PropertyList key={property.id} {...property} />
+                  ))
+                )
               }
             </Await>
           </Suspense>
         </div>
       </div>
-      <div className="bg-red-50 w-full [flex:2] relative flex flex-col justify-between pb-5">
+      <div className="bg-red-50 w-full [flex:2] sticky inset-0 right-0 flex flex-col justify-between pb-5">
         <Messages
           isMessageBoxOpen={isMessageBoxOpen}
           setIsMessageBoxOpen={setIsMessageBoxOpen}

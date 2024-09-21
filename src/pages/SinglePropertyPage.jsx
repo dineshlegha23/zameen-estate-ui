@@ -7,6 +7,7 @@ import { usePostContext } from "../context/postContext";
 const SinglePropertyPage = () => {
   const loaderPost = useLoaderData();
   const { post, setPost } = usePostContext();
+  console.log(loaderPost);
 
   useEffect(() => {
     setPost(loaderPost);
@@ -22,7 +23,7 @@ const SinglePropertyPage = () => {
         <PropertyDescription />
       </div>
       <div className="bg-red-50 md:w-full md:pt-5">
-        <ExtraInformation />
+        <ExtraInformation loaderPost={loaderPost} />
       </div>
     </section>
   );

@@ -3,7 +3,6 @@ import { usePostContext } from "../context/postContext";
 
 const Sizes = () => {
   const { post } = usePostContext();
-  console.log(post);
 
   return (
     <section>

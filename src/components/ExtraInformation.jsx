@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import General from "./General";
 import Sizes from "./Sizes";
 import NearbyPlaces from "./NearbyPlaces";
 import Location from "./Location";
 import axios from "axios";
+import { usePostContext } from "../context/postContext";
+import { useAuthContext } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
-const ExtraInformation = () => {
+const ExtraInformation = ({ loaderPost }) => {
+  const { post } = usePostContext();
+  const [saved, setSaved] = useState(loaderPost.isSaved);
+  const [error, setError] = useState(false);
+  const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
+
+  const url = import.meta.env.VITE_BACKEND_URL;
+
   const handleSavePost = async () => {
-    const response = await axios.post();
+    if (!currentUser) {
+      navigate("/login");
+    }
+    try {
+      setError(false);
+      const response = await axios.post(
+        `${url}/posts/${post.id}`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      setSaved((prev) => !prev);
+    } catch (error) {
+      console.log(error);
+
+      setSaved((prev) => !prev);
+      setError(error.response.data.msg);
+    }
   };
 
   return (
@@ -22,11 +51,17 @@ const ExtraInformation = () => {
           <p>Send a Message</p>
         </div>
 
-        <button className="flex items-center xs:text-center gap-2 bg-white rounded-xl p-4 border border-[#fece51] cursor-pointer">
+        <button
+          onClick={handleSavePost}
+          className={`flex items-center xs:text-center gap-2 bg-white rounded-xl p-4 border border-[#fece51] cursor-pointer ${
+            saved ? "bg-yellow-400" : ""
+          }`}
+        >
           <img src="/save.png" className="w-4 h-4" alt="" />
-          <p>Save the Place</p>
+          <p>{saved ? "Saved" : "Save the Place"}</p>
         </button>
       </div>
+      {error && <span className="text-red-500">{error}</span>}
     </section>
   );
 };
