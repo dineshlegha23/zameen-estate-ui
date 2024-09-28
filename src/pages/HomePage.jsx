@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const cookie = document.cookie;
+  console.log(cookie);
+
   const [query, setQuery] = useState({
     type: "buy",
     city: "",

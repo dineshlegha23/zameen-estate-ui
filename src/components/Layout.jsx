@@ -16,6 +16,8 @@ export const Layout = () => {
 
 export const ProtectedLayout = () => {
   const { currentUser } = useAuthContext();
+  console.log(document.cookie);
+
   if (!currentUser) {
     return <Navigate to={"/"} />;
   }
